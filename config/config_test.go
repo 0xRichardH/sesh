@@ -167,8 +167,6 @@ func BenchmarkParseConfigFile(b *testing.B) {
 		{input: 1},
 		{input: 10},
 		{input: 100},
-		{input: 1000},
-		{input: 10000},
 	}
 
 	for _, test := range table {
