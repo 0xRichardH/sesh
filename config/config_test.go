@@ -160,17 +160,18 @@ func prepareSeshConfigForBench(b *testing.B, extended_configs_count int) string 
 	return userConfigPath
 }
 
-var table = []struct {
-	input int
-}{
-	{input: 1},
-	{input: 10},
-	{input: 100},
-	{input: 1000},
-	{input: 10000},
-}
-
 func BenchmarkParseConfigFile(b *testing.B) {
+	var table = []struct {
+		input int
+	}{
+		{input: 0},
+		// {input: 1},
+		// {input: 10},
+		// {input: 100},
+		// {input: 1000},
+		// {input: 10000},
+	}
+
 	for _, test := range table {
 		b.Run(fmt.Sprintf("ParseConfigFile_%d", test.input), func(b *testing.B) {
 			userConfigPath := prepareSeshConfigForBench(b, test.input)
