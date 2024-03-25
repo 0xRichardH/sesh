@@ -165,7 +165,7 @@ func BenchmarkParseConfigFile(b *testing.B) {
 	var table = []struct {
 		input int
 	}{
-		{input: 1},
+		{input: 0},
 	}
 
 	for _, test := range table {
