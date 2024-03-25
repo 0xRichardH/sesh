@@ -48,10 +48,18 @@ func (d *DefaultConfigDirectoryFetcher) GetUserConfigDir() (string, error) {
 }
 
 func parseConfigFromFile(configPath string, config *Config) error {
-	data, err := os.ReadFile(configPath)
+	f, err := os.Open(configPath)
+	// data, err := os.ReadFile(configPath)
 	if err != nil {
 		return nil
 	}
+	defer f.Close()
+
+	data := make([]byte, 0)
+	if _, err := f.Read(data); err != nil {
+		return fmt.Errorf("Error reading config file: %s", err)
+	}
+
 	err = toml.Unmarshal(data, config)
 	if err != nil {
 		return fmt.Errorf("Error parsing config file: %s", err)
