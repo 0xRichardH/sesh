@@ -161,7 +161,6 @@ func prepareSeshConfigForBench(b *testing.B, extended_configs_count int) string 
 }
 
 func BenchmarkParseConfigFile(b *testing.B) {
-	b.Skip()
 	var table = []struct {
 		input int
 	}{
