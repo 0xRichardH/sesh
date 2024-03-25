@@ -51,7 +51,7 @@ func parseConfigFromFile(configPath string, config *Config) error {
 	f, err := os.Open(configPath)
 	// data, err := os.ReadFile(configPath)
 	if err != nil {
-		return nil
+		return fmt.Errorf("Error opening config file: %s", err)
 	}
 	defer f.Close()
 
